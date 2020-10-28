@@ -33,8 +33,6 @@ function addEventListeners() {
     })
 }
 
-
-
 function initMap(lat = 32.0749831, lng = 34.9120554) {
     console.log('InitMap');
     addEventListeners()
@@ -113,9 +111,9 @@ function renderLocations(locations){
 }
 // QUEST 7:
 function onRemoveLocation(id){
-    removeLocation(id);
+    locationService.removeLocation(id);
 }
 function onGoLocation(id){
-  const coords =  goToLocation(id);
+  const coords =  locationService.goToLocation(id);
   panTo(coords.lat, coords.lng)
 }
