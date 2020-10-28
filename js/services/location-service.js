@@ -26,3 +26,8 @@ function createLocation(name,lat,lng,weather,createdAt,updatedAt=null){
         updatedAt
     }
 }
+
+export const locationService = {
+    addLocation,
+    
+}
