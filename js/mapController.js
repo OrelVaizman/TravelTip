@@ -1,5 +1,6 @@
 import { mapService } from './services/mapService.js'
 
+// const API_KEY = 'AIzaSyD8qth7BA_EefnQxB5LywbeAxaoDn6cxsQ';
 var gMap;
 console.log('Main!');
 
@@ -10,7 +11,6 @@ mapService.getLocs()
 window.onload = () => {
     initMap()
         .then(() => {
-
             addMarker({ lat: 32.0749831, lng: 34.9120554 });
         })
         .catch(console.log('INIT MAP ERROR'));
@@ -27,8 +27,9 @@ window.onload = () => {
 
 function addEventListeners() {
     document.querySelector('form[name=search-form]').addEventListener('submit', (ev) => {
-    ev.preventDefault();
-    onSearchLocation(ev)
+        ev.preventDefault();
+        const searchedLocation = document.getElementById('search-location').value
+        onSearchLocation(searchedLocation)
         // panTo(35.6895, 139.6917);
     })
 }
@@ -38,7 +39,7 @@ function addEventListeners() {
 function initMap(lat = 32.0749831, lng = 34.9120554) {
     console.log('InitMap');
     addEventListeners()
-    _connectGoogleApi()
+    return _connectGoogleApi()
         .then(() => {
             console.log('google available');
             gMap = new google.maps.Map(
@@ -75,9 +76,8 @@ function getPosition() {
 
 function _connectGoogleApi() {
     if (window.google) return Promise.resolve()
-    const API_KEY = 'AIzaSyD8qth7BA_EefnQxB5LywbeAxaoDn6cxsQ'; //TODO: Enter your API Key
     var elGoogleApi = document.createElement('script');
-    elGoogleApi.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}`;
+    elGoogleApi.src = `https://maps.googleapis.com/maps/api/js?key=${mapService.API_KEY}`;
     elGoogleApi.async = true;
     document.body.append(elGoogleApi);
 
@@ -87,15 +87,18 @@ function _connectGoogleApi() {
     })
 }
 
-function onSearchLocation(ev) {
-    console.log('Wired')
+
+function onSearchLocation(name) {
+    mapService.getLatLngByName(name)
+    .then(location => console.log(location))
+    // console.log(txt)
 }
 
 
 
-function renderLocations(locations){
+function renderLocations(locations) {
     const elLocations = document.querySelector('.locations-details');
-    const strHtmls = locations.map(location=>{
+    const strHtmls = locations.map(location => {
         return `
         <tr class="${location.id}">
         <td>${location.name}</td>
@@ -112,3 +115,5 @@ function renderLocations(locations){
     })
     elLocations.innerHTML = strHtmls.join('');
 }
+
+
