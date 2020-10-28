@@ -33,9 +33,9 @@ function addEventListeners() {
     document.querySelector('.btn-my-location').addEventListener('click',(ev)=>{
         ev.preventDefault();
         console.log('click!!!')
-        getPosition().then(pos=>showLocation(pos))
+        getPosition().then(showLocation)
     })
-    document.querySelectorAll('.locations-details').forEach()
+   
 }
 
 function initMap(lat = 32.0749831, lng = 34.9120554) {
@@ -140,3 +140,11 @@ function showLocation(position) {
     gMap.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
     marker.setMap(gMap);
 }
+
+// function addEventListenersBtn(){
+//     const elContainers = document.querySelectorAll('.location-saved')
+//     elContainers.forEach(container =>{
+//         elContainers.querySelector('btn-go').addEventListener('click',data)
+//         elContainers.querySelector('btn-remove')
+//     })
+// }
