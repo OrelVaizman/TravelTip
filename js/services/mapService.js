@@ -15,13 +15,12 @@ function getLocs() {
     });
 }
 
-function searchLocation(searchedLocation){
-    console.log(searchedLocation)
-    //connecting api getting latlng
+// function searchLocation(searchedLocation){
+//     console.log(searchedLocation)
     //panto latlang
     //pushing to gLocations
 
-}
+// }
 
 function getLatLngByName(name){
 return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${name}&key=${API_KEY}`)

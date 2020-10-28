@@ -1,6 +1,5 @@
-import { mapService } from './services/mapService.js'
-
-// const API_KEY = 'AIzaSyD8qth7BA_EefnQxB5LywbeAxaoDn6cxsQ';
+import { mapService } from './services/mapService.js';
+import { locationService } from './services/location-service.js';
 var gMap;
 console.log('Main!');
 
@@ -33,8 +32,6 @@ function addEventListeners() {
         // panTo(35.6895, 139.6917);
     })
 }
-
-
 
 function initMap(lat = 32.0749831, lng = 34.9120554) {
     console.log('InitMap');
@@ -90,23 +87,25 @@ function _connectGoogleApi() {
 
 function onSearchLocation(name) {
     mapService.getLatLngByName(name)
-    .then(location => console.log(location))
-    // console.log(txt)
+        .then(location => {
+            locationService.addLocation(name, location.lat, location.lng, 'weather', Date.now(), Date.now())
+            panTo(location.lat, location.lng)
+            renderLocations()
+        })
 }
 
 
 
-function renderLocations(locations) {
+function renderLocations() {
     const elLocations = document.querySelector('.locations-details');
-    const strHtmls = locations.map(location => {
+    const strHtmls = locationService.gLocations.map(location => {
         return `
-        <tr class="${location.id}">
+        <tr data-id="${location.id}">
         <td>${location.name}</td>
         <td>${location.lat}</td>
         <td>${location.lng}</td>
         <td>${location.weather}</td>
-        <td>${location.createdAt}</td>
-        <td>${location.updatedAt}</td>
+        <td>${new Date(location.createdAt).toTimeString()}</td>
         <td>${location.updatedAt}</td>
         <td><button class="btn btn-go">GO</button></td>
         <td><button class="btn btn-remove">Delete</button></td>
@@ -115,5 +114,11 @@ function renderLocations(locations) {
     })
     elLocations.innerHTML = strHtmls.join('');
 }
-
-
+// QUEST 7:
+function onRemoveLocation(id) {
+    locationService.removeLocation(id);
+}
+function onGoLocation(id) {
+    const coords = locationService.goToLocation(id);
+    panTo(coords.lat, coords.lng)
+}
