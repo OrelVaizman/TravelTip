@@ -25,14 +25,19 @@ window.onload = () => {
         })
 }
 
-document.querySelector('.btn').addEventListener('click', (ev) => {
-    console.log('Aha!', ev.target);
-    panTo(35.6895, 139.6917);
-})
+function addEventListeners() {
+    document.querySelector('form[name=search-form]').addEventListener('submit', (ev) => {
+    ev.preventDefault();
+    onSearchLocation(ev)
+        // panTo(35.6895, 139.6917);
+    })
+}
+
 
 
 function initMap(lat = 32.0749831, lng = 34.9120554) {
     console.log('InitMap');
+    addEventListeners()
     _connectGoogleApi()
         .then(() => {
             console.log('google available');
@@ -80,6 +85,10 @@ function _connectGoogleApi() {
         elGoogleApi.onload = resolve;
         elGoogleApi.onerror = () => reject('Google script failed to load')
     })
+}
+
+function onSearchLocation(ev) {
+    console.log('Wired')
 }
 
 
