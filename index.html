@@ -7,24 +7,25 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <header class="main-header flex space-between">
+    <header class="main-header ">
+        <div class="container flex space-between">
         <h1 class="main-title">TravelTip</h1>
-        <div class="container flex main-controls space-between">
-            <form name="search-form">
+            <form name="search-form" class="container flex main-controls">
             <input type="search" id="search-location" placeholder="Enter Location">
             <button class="btn btn-go">Go</button>
-            </form>
             <button class="btn">My Location</button>
-        </div>
+            </form>
+       
+    </div>
     </header>
-    <section class="current-location-container flex space-between">
+    <section class="current-location-container container flex space-between">
 <!-- here put the current location and button -->
         <div class="current-location">
             <span class="title-current-location">location:</span><span class="current-location">guy</span>
         </div>
         <button class="btn btn-copy-location">copy location</button>
     </section>
-    <section class="apps-view flex space-between">
+    <section class="apps-view flex space-between container">
        
         <section class="main-view flex column wrap">
             <div class="weather">
