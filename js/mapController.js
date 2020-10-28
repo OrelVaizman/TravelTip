@@ -28,8 +28,7 @@ function addEventListeners() {
     document.querySelector('form[name=search-form]').addEventListener('submit', (ev) => {
         ev.preventDefault();
         const searchedLocation = document.getElementById('search-location').value
-        onSearchLocation(searchedLocation)
-        // panTo(35.6895, 139.6917);
+        onSearchLocation(searchedLocation);
     })
 }
 
@@ -118,7 +117,7 @@ function renderLocations() {
 function onRemoveLocation(id) {
     locationService.removeLocation(id);
 }
-function onGoLocation(id) {
-    const coords = locationService.goToLocation(id);
-    panTo(coords.lat, coords.lng)
+function onGoLocation(id){
+  const coords =  locationService.goToLocation(id);
+  panTo(coords.lat, coords.lng)
 }
