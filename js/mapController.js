@@ -97,7 +97,7 @@ function renderLocations(locations){
     const elLocations = document.querySelector('.locations-details');
     const strHtmls = locations.map(location=>{
         return `
-        <tr class="${location.id}">
+        <tr data-id="${location.id}">
         <td>${location.name}</td>
         <td>${location.lat}</td>
         <td>${location.lng}</td>
@@ -110,4 +110,12 @@ function renderLocations(locations){
         `
     })
     elLocations.innerHTML = strHtmls.join('');
+}
+// QUEST 7:
+function onRemoveLocation(id){
+    removeLocation(id);
+}
+function onGoLocation(id){
+  const coords =  goToLocation(id);
+  panTo(coords.lat, coords.lng)
 }
