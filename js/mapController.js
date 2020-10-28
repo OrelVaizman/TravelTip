@@ -84,3 +84,6 @@ function _connectGoogleApi() {
 
 
 
+function renderLocations(locations){
+    const elContainerTable = document.querySelector('.')
+}

@@ -8,11 +8,28 @@ body {
     height: 100vh;
 }
 
-#map{
-    margin: 0 auto;
+button{
+    margin: 0;
+    cursor: pointer;
+    text-transform: capitalize;
 }
 
 /* layout */
 .main-header{
     height: 50px;
+    margin-bottom: 2rem;
+}
+.current-location-container{
+    margin-bottom: 2rem;
+}
+
+/* Components */
+/* Current locations */
+.current-location-container .title-current-location{
+    text-transform: capitalize;
+    font-size: 1.5rem;
+    margin-right: 5px;
+}
+.btn-copy-location{
+    align-self: flex-end;
 }
