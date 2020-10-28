@@ -36,6 +36,12 @@ function addEventListeners() {
         var latLng = JSON.parse(pos)
         onMapClick(latLng)
     });
+    document.querySelector('.btn-my-location').addEventListener('click', (ev) => {
+        ev.preventDefault();
+        console.log('click!!!')
+        getPosition().then(pos => showLocation(pos))
+    })
+    // document.querySelectorAll('.locations-details').forEach()
 }
 
 function initMap(lat = 32.0749831, lng = 34.9120554) {
@@ -105,7 +111,7 @@ function renderLocations() {
     const elLocations = document.querySelector('.locations-details');
     const strHtmls = locationService.gLocations.map(location => {
         return `
-        <tr data-id="${location.id}">
+        <tr class="location-saved" data-id="${location.id}">
         <td>${location.name}</td>
         <td>${location.lat}</td>
         <td>${location.lng}</td>
@@ -131,9 +137,21 @@ function onGoLocation(id) {
 function onMapClick(location) {
     mapService.getAddressFromLatLng(location)
         .then(address => {
-            console.log(location.lat,location.lng)
+            console.log(location.lat, location.lng)
             locationService.addLocation(address, location.lat, location.lng, 'weather', Date.now(), Date.now())
             panTo(location.lat, location.lng)
             renderLocations()
         })
+
+    function showLocation(position) {
+        var lat = position.coords.latitude;
+        var lng = position.coords.longitude
+        var marker = new google.maps.Marker({
+            position: { lat, lng },
+            gMap,
+            title: 'Hello World!'
+        });
+        gMap.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+        marker.setMap(gMap);
+    }
 }
