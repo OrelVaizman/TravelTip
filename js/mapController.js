@@ -16,8 +16,7 @@ window.onload = () => {
 
     getPosition()
         .then(pos => {
-
-            console.log('User position is:', pos.coords);
+            console.log(pos.coords);
         })
         .catch(err => {
             console.log('err!!!', err);
@@ -30,11 +29,17 @@ function addEventListeners() {
         const searchedLocation = document.getElementById('search-location').value
         onSearchLocation(searchedLocation);
     })
+    // document.querySelector('#map').addEventListener('click', (ev) => {
+    //     ev.preventDefault()
+    gMap.addListener("click", (event) => {
+        var pos = JSON.stringify(event.latLng);
+        var latLng = JSON.parse(pos)
+        onMapClick(latLng)
+    });
 }
 
 function initMap(lat = 32.0749831, lng = 34.9120554) {
     console.log('InitMap');
-    addEventListeners()
     return _connectGoogleApi()
         .then(() => {
             console.log('google available');
@@ -44,6 +49,7 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
                 zoom: 15
             })
             console.log('Map!', gMap);
+            addEventListeners()
         })
 }
 
@@ -117,7 +123,17 @@ function renderLocations() {
 function onRemoveLocation(id) {
     locationService.removeLocation(id);
 }
-function onGoLocation(id){
-  const coords =  locationService.goToLocation(id);
-  panTo(coords.lat, coords.lng)
+function onGoLocation(id) {
+    const coords = locationService.goToLocation(id);
+    panTo(coords.lat, coords.lng)
+}
+
+function onMapClick(location) {
+    mapService.getAddressFromLatLng(location)
+        .then(address => {
+            console.log(location.lat,location.lng)
+            locationService.addLocation(address, location.lat, location.lng, 'weather', Date.now(), Date.now())
+            panTo(location.lat, location.lng)
+            renderLocations()
+        })
 }
