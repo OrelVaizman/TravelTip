@@ -2,3 +2,17 @@
 *{
     box-sizing: border-box;
 }
+body {
+    background-color: rgb(238, 122, 87);
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100vh;
+}
+
+#map{
+    margin: 0 auto;
+}
+
+/* layout */
+.main-header{
+    height: 50px;
+}

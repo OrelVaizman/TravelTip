@@ -7,8 +7,18 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <h1>ES6</h1>
-    <div id="map" style="width: 100%; height: 400px;"></div>
+    <header class="main-header flex space-between">
+        <h1 class="main-title">TravelTip</h1>
+        <div class="container flex main-controls space-between">
+            <input type="search" id="search-location" placeholder="Enter Location">
+            <button class="btn btn-go">Go</button>
+            <button class="btn">My Location</button>
+        </div>
+    </header>
+    <section class="current-location flex">
+
+    </section>
+    <div id="map" style="width: 50%; height: 400px;"></div>
     <!-- <button class="btn">Click Me</button> -->
     <script type="module" src="js/mapController.js"></script>
 </body>
