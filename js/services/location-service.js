@@ -6,8 +6,7 @@ const LOCATIONS = 'LocationsDB'
 
 function addLocation(id,name,lat,lng,weather,createdAt,updatedAt){
     gLocations.push(createLocation(id,name,lat,lng,weather,createdAt,updatedAt));
-    storageService.saveToStorage(LOCATIONS,gLocations)
-     
+    storageService.saveToStorage(LOCATIONS,gLocations)   
 }
 
 function createLocation(id,name,lat,lng,weather,createdAt,updatedAt){
