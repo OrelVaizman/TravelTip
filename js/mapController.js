@@ -104,7 +104,6 @@ function renderLocations(locations){
         <td>${location.weather}</td>
         <td>${location.createdAt}</td>
         <td>${location.updatedAt}</td>
-        <td>${location.updatedAt}</td>
         <td><button class="btn btn-go">GO</button></td>
         <td><button class="btn btn-remove">Delete</button></td>
         </tr>
