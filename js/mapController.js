@@ -30,6 +30,11 @@ function addEventListeners() {
         const searchedLocation = document.getElementById('search-location').value
         onSearchLocation(searchedLocation);
     })
+    document.querySelector('.btn-my-location').addEventListener('click',(ev)=>{
+        ev.preventDefault();
+        console.log('click!!!')
+        getPosition().then(pos=>showLocation(pos))
+    })
 }
 
 function initMap(lat = 32.0749831, lng = 34.9120554) {
@@ -120,4 +125,17 @@ function onRemoveLocation(id) {
 function onGoLocation(id){
   const coords =  locationService.goToLocation(id);
   panTo(coords.lat, coords.lng)
+}
+
+
+function showLocation(position) {
+    var lat = position.coords.latitude;
+    var lng = position.coords.longitude
+    var marker = new google.maps.Marker({
+        position: { lat, lng },
+        gMap,
+        title: 'Hello World!'
+    });
+    gMap.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+    marker.setMap(gMap);
 }

@@ -26,6 +26,9 @@ button:hover{
     
     color: #dcdcdc;
 }
+button:focus{
+    outline: none;
+}
 input{
     border: none;
     padding: 10px;
@@ -37,6 +40,9 @@ input:focus{
     outline: none;
     background-color: #d0dfdc;
     color: black;
+}
+th,td{
+    border: 1px solid white;
 }
 
 /* layout */
@@ -54,7 +60,12 @@ input:focus{
 .current-location-container{
     margin-bottom: 2rem;
 }
-
+.main-view{
+    flex-basis: 40%;
+}
+.apps-view{
+    flex-basis: 60%;
+}
 /* Components */
 /* header */
 .main-header .main-title{
