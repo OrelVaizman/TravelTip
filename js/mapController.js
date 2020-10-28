@@ -3,6 +3,7 @@ import { mapService } from './services/mapService.js'
 var gMap;
 console.log('Main!');
 
+//This one just does nothing but returning a location variable in 2 ses(settimeout)
 mapService.getLocs()
     .then(locs => console.log('locs', locs))
 
@@ -30,9 +31,9 @@ document.querySelector('.btn').addEventListener('click', (ev) => {
 })
 
 
-export function initMap(lat = 32.0749831, lng = 34.9120554) {
+function initMap(lat = 32.0749831, lng = 34.9120554) {
     console.log('InitMap');
-    return _connectGoogleApi()
+    _connectGoogleApi()
         .then(() => {
             console.log('google available');
             gMap = new google.maps.Map(
@@ -69,7 +70,7 @@ function getPosition() {
 
 function _connectGoogleApi() {
     if (window.google) return Promise.resolve()
-    const API_KEY = 'AIzaSyDA-5D_hj0UwZeQ3hTvxn_WgvQK67mk_8w'; //TODO: Enter your API Key
+    const API_KEY = 'AIzaSyD8qth7BA_EefnQxB5LywbeAxaoDn6cxsQ'; //TODO: Enter your API Key
     var elGoogleApi = document.createElement('script');
     elGoogleApi.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}`;
     elGoogleApi.async = true;

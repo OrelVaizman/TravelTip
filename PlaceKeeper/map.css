@@ -1,0 +1,12 @@
+* {
+    box-sizing: border-box;
+}
+
+.userlocation {
+    height: 30px;
+    width: 30px;
+}
+
+.location-list ul {
+    list-style: none;
+}

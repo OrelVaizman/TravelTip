@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlaceKeeper - User Perfernces</title>
+</head>
+
+<body>
+    <h1>Please choose your map page color:
+    </h1>
+
+    <form onsubmit="onSubmitPref(event)">
+        <article>
+            <label for="HP-color">Preferred HomePage Background color:</label>
+            <input type="color" id="HP-color" name="HP-color" form="Pref-form" value="#ff0000" />
+        </article>
+        <article>
+            <label for="color">Preferred text color:</label>
+            <input type="color" id="TXT-color" name="TXT-color" form="Pref-form" value="" />
+        </article>
+        <article>
+            <label for="USR-birthdate">Date of Birth:</label>
+            <input type="date" id="USR-birthdate" name="USR-birthdate" />
+        </article>
+        <article>
+            <label for="USR-birthtime">Time of Birth:</label>
+            <input type="time" id="USR-birthtime" name="USR-birthtime" />
+        </article>
+        <article>
+            <label for="USR-email">E-mail:</label>
+            <input type="email" name="USR-email" id="USR-email" required/>
+        </article>
+        <!-- <input type="range" id="USR-age" name="USR-age" min="18" max="120" value="26" onchange="showAge(this.value);" />
+        <span class="age-display">18</span> -->
+        <button type="submit">Submit</button>
+
+    </form>
+    <script src="js/util-service.js"></script>
+    <script src="js/userPref-controller.js"></script>
+    <script src="js/userPref-service.js"></script>
+    <!-- <script src="js/map-service.js"></script> -->
+</body>
+</html>
