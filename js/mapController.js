@@ -93,3 +93,22 @@ function onSearchLocation(ev) {
 
 
 
+function renderLocations(locations){
+    const elLocations = document.querySelector('.locations-details');
+    const strHtmls = locations.map(location=>{
+        return `
+        <tr class="${location.id}">
+        <td>${location.name}</td>
+        <td>${location.lat}</td>
+        <td>${location.lng}</td>
+        <td>${location.weather}</td>
+        <td>${location.createdAt}</td>
+        <td>${location.updatedAt}</td>
+        <td>${location.updatedAt}</td>
+        <td><button class="btn btn-go">GO</button></td>
+        <td><button class="btn btn-remove">Delete</button></td>
+        </tr>
+        `
+    })
+    elLocations.innerHTML = strHtmls.join('');
+}

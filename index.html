@@ -17,11 +17,47 @@
             <button class="btn">My Location</button>
         </div>
     </header>
-    <section class="current-location flex">
-
+    <section class="current-location-container flex space-between">
+<!-- here put the current location and button -->
+        <div class="current-location">
+            <span class="title-current-location">location:</span><span class="current-location">guy</span>
+        </div>
+        <button class="btn btn-copy-location">copy location</button>
     </section>
-    <div id="map" style="width: 50%; height: 400px;"></div>
+    <section class="apps-view flex space-between">
+       
+        <section class="main-view flex column wrap">
+            <div class="weather">
+                <!-- Weather -->
+            </div>
+            <div class="table-locations">
+                <table>
+                    <thead>
+                        <th>name</th>
+                        <th>lat</th>
+                        <th>lng</th>
+                        <th>weather</th>
+                        <th>created</th>
+                        <th>last update</th>
+                        <th>Actions</th>
+                    </thead>
+                    <tbody class="locations-details">
+                        <tr>
+                            <td>dsad</td>
+                            <td>dsad</td>
+                            <td>dsad</td>
+                            <td>dsad</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </section>
+        <!-- Maps go here -->
+        <div id="map" style="width: 50%; height: 400px;"></div>
+    </section>
     <!-- <button class="btn">Click Me</button> -->
+  
     <script type="module" src="js/mapController.js"></script>
 </body>
 </html>
